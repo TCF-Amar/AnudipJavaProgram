@@ -1,0 +1,19 @@
+package com.example;
+
+import java.util.Scanner;
+
+
+class  Student{
+	public long rollno;
+	public String name;
+	private String address;
+	
+}
+
+public class MyClass {
+    public static void main(String[] args) {
+        Student = new Student();
+        e.setter();
+        e.getter();
+    }
+}

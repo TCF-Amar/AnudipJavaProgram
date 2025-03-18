@@ -1,0 +1,24 @@
+package com.example;
+
+import java.util.Scanner;
+
+public class MyClass {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int arr[] = {10,15,20,23,435,23,21,56};
+		
+		for(int data:arr) {
+			
+			
+			if(data%2 == 0) System.out.println("Even");
+			
+			else System.out.println("Add");
+		}
+		
+		
+		
+	  }
+	}
+
+

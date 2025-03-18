@@ -1,0 +1,40 @@
+package com.example;
+
+import java.util.Scanner;
+
+
+ class Employee{
+	 Scanner sc = new Scanner(System.in);
+	 int id;
+	 String name;
+	 double sallary;
+	 
+	 public void setter() {
+		 id = sc.nextInt();
+		 name = sc.nextLine();
+		 sallary = sc.nextDouble();
+		 
+	 }
+	 public void getter() {
+		 System.out.println("id: "+id);
+		 System.out.println("Name: "+name);
+		 System.out.println("Sallary: "+sallary);
+	 }
+	 
+	 
+}
+public class MyClass {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Employee e = new Employee();
+		
+		e.setter();
+		e.getter();
+		
+		
+		
+	  }
+	}
+
+

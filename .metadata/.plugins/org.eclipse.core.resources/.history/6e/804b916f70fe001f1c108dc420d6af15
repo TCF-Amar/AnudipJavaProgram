@@ -1,0 +1,6 @@
+package com.example;
+
+class Student {
+	private int rollNo;
+	String name;
+}

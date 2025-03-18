@@ -1,0 +1,35 @@
+package com.example;
+
+
+
+class Test{
+	
+	
+	public  void inc() {
+		int c =0;
+		c++;
+		System.out.println(c);
+	}
+	
+}
+
+
+public class MeraClass {
+
+	public static void main(String[] args) {
+		
+		Test t  = new Test();
+		
+//		Test.inc();
+		t.inc();
+//		t.inc();
+//		t.inc();
+//		Test t1  = new Test();
+//		t1.inc();
+//		t1.inc();
+//		t1.inc();
+	
+		
+	}
+
+}

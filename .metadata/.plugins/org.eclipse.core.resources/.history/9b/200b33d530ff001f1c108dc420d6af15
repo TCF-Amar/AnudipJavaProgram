@@ -1,0 +1,17 @@
+package com.example;
+
+
+
+class Test{
+	static int c =0;
+	
+}
+
+
+public class MeraClass {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

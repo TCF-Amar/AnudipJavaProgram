@@ -1,0 +1,38 @@
+package com.example;
+
+import java.util.Scanner;
+
+
+class  Student{
+	public long rollno;
+	public String name;
+	private String address;
+	
+	Scanner sc = new Scanner(System.in);
+	
+	public void setter() {
+		System.out.print("Enter Student Roll no: ");
+		rollno = sc.nextLong();
+		sc.nextLine();
+		name = sc.nextLine();
+		sc.nextLine();
+		address = sc.nextLine();
+	}
+	
+	public void getter() {
+		System.out.print("Student Roll no: "+ rollno);
+		System.out.print("Student Name: "+ name);
+		System.out.print("Student Address: "+address);
+
+		
+
+	}
+	
+}
+
+public class MyClass {
+    public static void main(String[] args) {
+        Student s= new Student();
+       
+    }
+}

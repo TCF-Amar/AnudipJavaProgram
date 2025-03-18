@@ -1,0 +1,26 @@
+package com.example;
+
+import java.util.Scanner;
+
+
+class  Student{
+	public long rollno;
+	public String name;
+	private String address;
+	
+	Scanner sc = new Scnanner(System.in);
+	
+	public void setter() {
+		System.out.print("Enter Student Roll no: ");
+		rollno = sc.nectInt();
+	}
+	
+	
+}
+
+public class MyClass {
+    public static void main(String[] args) {
+        Student s= new Student();
+       
+    }
+}

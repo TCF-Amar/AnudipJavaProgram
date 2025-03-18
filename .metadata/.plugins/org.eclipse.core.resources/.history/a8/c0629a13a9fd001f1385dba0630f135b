@@ -1,0 +1,20 @@
+package com.example;
+
+import java.util.Scanner;
+
+public class 3MyClass {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String arr[][]  = {{"abc","cde","efg"},{"ghi","ijk","klm"},{"mno","opq","qrs"}};
+		for(int j =0; i<arr.length; i++) {
+			for(int j =0; j<arr.length; i++) {
+				System.out.print(arr[j]);
+			}
+		}
+		
+		
+	  }
+	}
+
+
