@@ -26,7 +26,7 @@ public class March21 {
 		s.display();
 //		char a = 65;
 		
-		System.out.println(a);
+//		System.out.println(a);
 		
 
 	}

@@ -1,43 +1,43 @@
-package com.example;
-
-import java.util.Scanner;
-
-
-class  Student{
-	public long rollno;
-	public String name;
-	private String address;
-	
-	Scanner sc = new Scanner(System.in);
-	
-	public void setter() {
-		System.out.print("Enter Student Roll no: ");
-		rollno = sc.nextLong();
-		System.out.print("Enter Student Name: ");
-
-		sc.nextLine();
-		name = sc.nextLine();
-		System.out.print("Enter Student Address: ");
-
-		address = sc.nextLine();
-	}
-	
-	public void getter() {
-		System.out.println("Student Roll no: "+ rollno);
-		System.out.println("Student Name: "+ name);
-		System.out.println("Student Address: "+address);
-
-		
-
-	}
-	
-}
-
-public class MyClass {
-    public static void main(String[] args) {
-        Student s= new Student();
-        s.setter();
-        s.getter();
-       
-    }
-}
+//package com.example;
+//
+//import java.util.Scanner;
+//
+//
+//class  Student{
+//	public long rollno;
+//	public String name;
+//	private String address;
+//	
+//	Scanner sc = new Scanner(System.in);
+//	
+//	public void setter() {
+//		System.out.print("Enter Student Roll no: ");
+//		rollno = sc.nextLong();
+//		System.out.print("Enter Student Name: ");
+//
+//		sc.nextLine();
+//		name = sc.nextLine();
+//		System.out.print("Enter Student Address: ");
+//
+//		address = sc.nextLine();
+//	}
+//	
+//	public void getter() {
+//		System.out.println("Student Roll no: "+ rollno);
+//		System.out.println("Student Name: "+ name);
+//		System.out.println("Student Address: "+address);
+//
+//		
+//
+//	}
+//	
+//}
+//
+//public class MyClass {
+//    public static void main(String[] args) {
+//        Student s= new Student();
+//        s.setter();
+//        s.getter();
+//       
+//    }
+//}
