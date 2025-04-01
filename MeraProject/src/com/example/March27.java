@@ -5,7 +5,7 @@ import java.util.Scanner;
 class BusBooking {
     Scanner sc = new Scanner(System.in);
     int[] arr = new int[10];
-
+//    {0,0,0,0,0,0,1,0}
     public void displaySeats() {
         int sn = 1;
         System.out.println("===========================");
