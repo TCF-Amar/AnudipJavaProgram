@@ -5,10 +5,9 @@ class Pizza {
     private String size;
     private double basePrice;
     private double toppingsPrice = 0;
-    private StringBuilder toppings = new StringBuilder();
+    private String toppings = "";
 
     public Pizza(String size) {
-    	
         this.size = size;
         switch (size.toLowerCase()) {
             case "large":
@@ -21,12 +20,15 @@ class Pizza {
                 this.basePrice = 6.0;
                 break;
             default:
-                throw new IllegalArgumentException("Invalid size");
+                this.basePrice = 0;
         }
     }
 
     public void addTopping(String topping, double price) {
-        toppings.append(topping).append(", ");
+        if (toppings.length() > 0) {
+            toppings += ", ";
+        }
+        toppings += topping;
         toppingsPrice += price;
     }
 
@@ -36,7 +38,7 @@ class Pizza {
 
     public void displayOrderDetails() {
         System.out.println("Pizza Size: " + size);
-        System.out.println("Toppings: " + (toppings.length() > 0 ? toppings.substring(0, toppings.length() - 2) : "None"));
+        System.out.println("Toppings: " + (toppings.isEmpty() ? "None" : toppings));
         System.out.println("Total Price: $" + calculateTotalPrice());
     }
 }
