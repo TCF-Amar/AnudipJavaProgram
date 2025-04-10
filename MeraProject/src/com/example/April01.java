@@ -1,11 +1,10 @@
 package com.example;
 
-
 class Pizza {
     private String size;
     private double basePrice;
     private double toppingsPrice = 0;
-    private String toppings = "";
+    public StringBuilder toppings = new StringBuilder();
 
     public Pizza(String size) {
         this.size = size;
@@ -26,9 +25,9 @@ class Pizza {
 
     public void addTopping(String topping, double price) {
         if (toppings.length() > 0) {
-            toppings += ", ";
+            toppings.append(", ");
         }
-        toppings += topping;
+        toppings.append(topping);
         toppingsPrice += price;
     }
 
@@ -38,7 +37,7 @@ class Pizza {
 
     public void displayOrderDetails() {
         System.out.println("Pizza Size: " + size);
-        System.out.println("Toppings: " + (toppings.isEmpty() ? "None" : toppings));
+        System.out.println("Toppings: " + (toppings.length() == 0 ? "None" : toppings));
         System.out.println("Total Price: $" + calculateTotalPrice());
     }
 }
@@ -47,6 +46,8 @@ public class April01 {
     public static void main(String[] args) {
         Pizza order1 = new Pizza("large");
         order1.addTopping("Pepperoni", 2.0);
+        order1.addTopping("Extra Cheese", 1.5);
+        
         order1.addTopping("Mushrooms", 1.5);
         
         System.out.println("Order 1 Details:");

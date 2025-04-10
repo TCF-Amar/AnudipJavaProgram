@@ -170,6 +170,7 @@ public class Assignment {
 		
 		// Selection sort
 		int arr1[] = { 5, 2, 8, 1, 3 };
+		
 		at.selectionSort(arr1);
 		System.out.print("Sorted Array: ");
 		
@@ -178,6 +179,8 @@ public class Assignment {
 		}
 		System.out.println();
 
+		sc.close();
 	}
 
+	
 }

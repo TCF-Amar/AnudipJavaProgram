@@ -1,6 +1,5 @@
 package com.example;
 
-import com.example.Outer.Inner.Inner1;
 
 class Outer{
 	
@@ -68,7 +67,6 @@ public class March20 {
 		
 		Outer.Inner.Inner1.Inner2 inner3 = inner2.new Inner2();
 		
-//		inner3.printnum();
 		
 		
 		Child c = new Child();
