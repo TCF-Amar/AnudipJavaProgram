@@ -1,4 +1,4 @@
-package com.example;
+package assignments;
 
 import java.util.Scanner;
 
@@ -13,26 +13,25 @@ class MyBank {
 	}
 
 	public void depositAmount() {
-		
+
 		System.out.print("Deposit  Balance: ");
-		
+
 		double depositamount = sc.nextDouble();
 
-		this.amount += depositamount; //10000 + 10000
+		this.amount += depositamount; // 10000 + 10000
 
 		System.out.println("Deposit successful. New balance: " + amount);
 	}
 
 	public void withdrawAmount() {
-		
+
 		System.out.println("Winrawal Balance: ");
-		
+
 		double withdrowamount = sc.nextDouble();
-		
+
 		if (this.amount < withdrowamount) {
 			System.out.println("Insufficient balance..");
-		} 
-		else {
+		} else {
 			this.amount -= withdrowamount;
 			System.out.println("Withdraw successful.");
 			System.out.println("Remaining  Balance: " + this.amount);
@@ -70,7 +69,7 @@ public class Bank {
 			default:
 				System.out.print("Invalid Input");
 			}
-
+			sc.close();
 		}
 
 	}
