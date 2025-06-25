@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<hibernate-configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="hibernate.cfg.xsd"   >
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/managmetdatabase</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">amarjeet</property>
+
+        <!-- JDBC connection pool (optional) -->
+        <property name="connection.pool_size">10</property>
+
+        <!-- SQL dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+
+        <!-- Enable Hibernate SQL logging
+         -->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+
+        <!-- Automatically create/update tables
+         -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+
+    </session-factory>
+</hibernate-configuration>
