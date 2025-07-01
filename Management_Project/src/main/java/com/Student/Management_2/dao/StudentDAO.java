@@ -13,6 +13,7 @@ import com.Student.Management_2.utils.HibernateUtils;
 public class StudentDAO {
 
 	private static final Scanner sc = new Scanner(System.in);
+	private List<Student> students = new ArrayList<>();
 
 	// ✅ CREATE
 	@SuppressWarnings("deprecation")
@@ -212,5 +213,18 @@ public class StudentDAO {
 			return new ArrayList<>();
 		}
 	}
+	
+	  public List<Student> getStudentsByCourseId(int courseId) {
+	      Session session = HibernateUtils.getSessionFactory().openSession();  
+		  List<Student> result = session.createQuery("FROM Student WHERE course.id = :courseId", Student.class)
+	              .setParameter("courseId", courseId)
+	              .list();
+	        for (Student s : students) {
+	            if (s.getCourseId() == courseId) {
+	                result.add(s);
+	            }
+	        }
+	        return result;
+	    }
 
 }

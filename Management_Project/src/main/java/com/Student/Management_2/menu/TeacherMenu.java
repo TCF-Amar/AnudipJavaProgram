@@ -2,6 +2,7 @@ package com.Student.Management_2.menu;
 
 import java.util.Scanner;
 
+import com.Student.Management_2.services.AttendanceServices;
 import com.Student.Management_2.services.CourseServices;
 import com.Student.Management_2.services.StudentServices;
 
@@ -10,6 +11,7 @@ public class TeacherMenu {
 	private static final Scanner sc = new Scanner(System.in);
 	private static final StudentServices studentServices = new StudentServices();
 	private static final CourseServices courseServices = new CourseServices();
+	private static final AttendanceServices attendanceServices = new AttendanceServices();
 
 	public static void show() {
 		while (true) {
@@ -21,6 +23,7 @@ public class TeacherMenu {
 			System.out.println("3. View All Students");
 			System.out.println("4. Search Student");
 			System.out.println("5. Search Course");
+			System.out.println("6. Track Attendance ");
 			System.out.println("0. Logout");
 			System.out.print("Enter your choice: ");
 
@@ -48,6 +51,9 @@ public class TeacherMenu {
 				break;
 			case 5:
 				searchCourse();
+				break;
+			case 6:
+				attendanceManagementMenu();
 				break;
 			case 0:
 				System.out.println("✅ Logged out successfully.");
@@ -108,6 +114,49 @@ public class TeacherMenu {
 			default:
 				System.out.println("⚠️ Invalid choice.");
 				break;
+			}
+		}
+	}
+
+	// ✅ Attendance Management Submenu
+	public static void attendanceManagementMenu() {
+		while (true) {
+			System.out.println("\n---- Attendance Management ----");
+			System.out.println("1. Take Attendance for Course");
+			System.out.println("2. View Attendance by Student ID");
+			System.out.println("3. View All Attendance");
+			System.out.println("4. Update Attendance Status");
+			System.out.println("5. Delete Attendance");
+			System.out.println("0. Back to Main Menu");
+			System.out.print("Enter your choice: ");
+			int choice;
+			try {
+				choice = Integer.parseInt(sc.nextLine());
+			} catch (NumberFormatException e) {
+				System.out.println("❌ Invalid input. Please enter a number.");
+				continue;
+			}
+
+			switch (choice) {
+			case 1:
+				attendanceServices.takeAttendanceForCourse();
+				break;
+			case 2:
+				attendanceServices.getAttendanceByStudentId();
+				break;
+			case 3:
+				attendanceServices.viewAllAttendance();
+				break;
+			case 4:
+				attendanceServices.updateAttendanceStatus();
+				break;
+			case 5:
+				attendanceServices.deleteAttendanceById();
+				break;
+			case 0:
+				return;
+			default:
+				System.out.println("⚠️ Invalid choice.");
 			}
 		}
 	}
