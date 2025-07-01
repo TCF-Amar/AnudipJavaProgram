@@ -17,21 +17,23 @@ public class AuthServices {
 
 	public void adminLogin() {
 
-		System.out.print("Enter admin email: ");
+		System.out.print("Enter admin email(admin@gmail.com): ");
 		String email = sc.nextLine();
- 
-		System.out.print("Enter password: ");
+
+		System.out.print("Enter password(admin123): ");
 		String password = sc.nextLine();
 
 		if (email.equals(adminemail) && password.equals(adminpass)) {
+			System.out.println("----------------------------------");
 			System.out.println("Logged in successfully " + this.admin);
+			System.out.println("----------------------------------");
 			AdminMenu.show();
 		} else {
+			System.out.println("----------------------------------");
 			System.out.println("Invalid email or password");
 			System.out.println("Please try again");
-//			adminLogin();
+			System.out.println("----------------------------------");
 		}
-//		AdminMenu.show();
 
 	}
 
@@ -55,16 +57,21 @@ public class AuthServices {
 					.setParameter("email", email).uniqueResult();
 
 			if (teacher != null && teacher.getPassword().equals(password)) {
+				System.out.println("----------------------------------");
 				System.out.println("Logged in successfully as " + teacher.getName());
+				System.out.println("----------------------------------");
 				TeacherMenu.show();
 			} else {
+				System.out.println("----------------------------------");
 				System.out.println("Invalid email or password");
 				System.out.println("Please try again");
-//				TeacherLogin();
+				System.out.println("----------------------------------");
 			}
 		} catch (Exception e) {
+			System.out.println("----------------------------------");
 			System.out.println("An error occurred while logging in: " + e.getMessage());
-
+			System.out.println("Please try again");
+			System.out.println("----------------------------------");
 		}
 
 	}
