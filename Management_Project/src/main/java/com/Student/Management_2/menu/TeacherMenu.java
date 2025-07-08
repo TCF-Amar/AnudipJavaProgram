@@ -127,6 +127,7 @@ public class TeacherMenu {
 			System.out.println("3. View All Attendance");
 			System.out.println("4. Update Attendance Status");
 			System.out.println("5. Delete Attendance");
+			System.out.println("6. Get Attendance by  Date");
 			System.out.println("0. Back to Main Menu");
 			System.out.print("Enter your choice: ");
 			int choice;
@@ -152,6 +153,9 @@ public class TeacherMenu {
 				break;
 			case 5:
 				attendanceServices.deleteAttendanceById();
+				break;
+			case 6:
+				attendanceServices.getAttendanceByDate();
 				break;
 			case 0:
 				return;

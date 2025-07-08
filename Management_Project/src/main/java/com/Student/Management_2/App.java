@@ -21,7 +21,7 @@ public class App {
             int choice = -1;
 
             try {
-                choice = Integer.parseInt(sc.nextLine()); // Use nextLine to avoid scanner bug
+                choice = Integer.parseInt(sc.nextLine()); 
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter a number.");
                 continue;

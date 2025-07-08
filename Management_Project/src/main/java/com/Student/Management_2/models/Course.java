@@ -18,7 +18,7 @@ public class Course {
     private int duration;
 
     @Column(nullable = false)
-    private long fees;
+    private Double feesAmount;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Student> students;
@@ -49,12 +49,12 @@ public class Course {
         this.duration = duration;
     }
 
-    public long getFees() {
-        return fees;
+    public Double getFeesAmaount() {
+        return feesAmount;
     }
 
-    public void setFees(long fees) {
-        this.fees = fees;
+    public void setFeesAmount(Double fees) {
+        this.feesAmount = fees;
     }
 
     public List<Student> getStudents() {

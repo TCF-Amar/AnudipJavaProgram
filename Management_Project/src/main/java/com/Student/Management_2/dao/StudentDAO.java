@@ -1,12 +1,15 @@
 package com.Student.Management_2.dao;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.Student.Management_2.enums.FeeStatus;
 import com.Student.Management_2.models.Course;
+import com.Student.Management_2.models.Fees;
 import com.Student.Management_2.models.Student;
 import com.Student.Management_2.utils.HibernateUtils;
 
@@ -18,51 +21,90 @@ public class StudentDAO {
 	// ✅ CREATE
 	@SuppressWarnings("deprecation")
 	public Boolean createStudent(String name, String email) {
-		Session session = null;
-		Transaction tx = null;
+	    Session session = null;
+	    Transaction tx = null;
 
-		try {
-			session = HibernateUtils.getSessionFactory().openSession();
-			tx = session.beginTransaction();
+	    try {
+	        session = HibernateUtils.getSessionFactory().openSession();
+	        tx = session.beginTransaction();
 
-			Student student = new Student();
-			student.setName(name);
-			student.setEmail(email);
+	        Student student = new Student();
+	        student.setName(name);
+	        student.setEmail(email);
 
-			// Show available courses
-			System.out.println("Courses");
-			System.out.println("---------------------");
-			List<Course> courses = session.createQuery("FROM Course", Course.class).list();
-			for (Course c : courses) {
-				System.out.println(c.getId() + "\t" + c.getCourseName());
-			}
+	        // Show available courses
+	        System.out.println("Courses");
+	        System.out.println("---------------------");
+	        List<Course> courses = session.createQuery("FROM Course", Course.class).list();
+	        for (Course c : courses) {
+	            System.out.println(c.getId() + "\t" + c.getCourseName() + "\t₹" + c.getFeesAmaount());
+	        }
 
-			System.out.print("Enter Course ID to assign to the student: ");
-			Integer courseId = sc.nextInt();
-			sc.nextLine();
+	        System.out.print("Enter Course ID to assign to the student: ");
+	        Integer courseId = sc.nextInt();
+	        sc.nextLine();
 
-			Course selectedCourse = session.get(Course.class, courseId);
-			if (selectedCourse == null) {
-				System.out.println("❌ Invalid Course ID.");
-				return false;
-			}
+	        Course selectedCourse = session.get(Course.class, courseId);
+	        if (selectedCourse == null) {
+	            System.out.println("❌ Invalid Course ID.");
+	            return false;
+	        }
 
-			student.setCourse(selectedCourse);
-			session.save(student);
-			tx.commit();
-			return true;
+	        student.setCourse(selectedCourse);
 
-		} catch (Exception e) {
-			return false;
-		} finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-			if (session != null) {
-				session.close();
-			}
-		}
+	        Double feesAmount = selectedCourse.getFeesAmaount();
+	        System.out.println("Fees for the selected course: ₹" + feesAmount);
+
+	        System.out.print("Enter Paid Amount: ");
+	        Double paidAmount = sc.nextDouble();
+	        sc.nextLine();
+
+	        Double dueAmount = feesAmount - paidAmount;
+	        String status;
+	        if (paidAmount <= 0) {
+	            status = "due";
+	        } else if (dueAmount <= 0) {
+	            status = "paid";
+	        } else {
+	            status = "partial";
+	        }
+
+	        System.out.println("Due Amount: ₹" + dueAmount);
+	        System.out.println("Status: " + status);
+
+	        // Create Fees object
+	        Fees fee = new Fees();
+	        fee.setAmount(feesAmount);
+	        fee.setPaidAmount(paidAmount);
+	        fee.setDueAmount(dueAmount);
+	        fee.setStatus(FeeStatus.valueOf(status.toUpperCase()));
+	        fee.setPaymentDate(LocalDateTime.now()); // Use LocalDate for date
+
+	        // Set relationship
+	        fee.setStudent(student);
+	        student.setFees(fee);
+
+	        // Save student (fees will be saved via cascade)
+	        session.save(student);
+	        tx.commit();
+
+	        System.out.println("✅ Student and Fees saved successfully.");
+	        return true;
+
+	    } catch (Exception e) {
+	        e.printStackTrace();  // Important for debugging
+	        return false;
+
+	    } finally {
+	        if (tx != null && tx.isActive()) {
+	            tx.rollback();
+	        }
+	        if (session != null) {
+	            session.close();
+	        }
+	    }
 	}
+
 
 	// ✅ READ by ID
 	public Student getStudentById(int id) {

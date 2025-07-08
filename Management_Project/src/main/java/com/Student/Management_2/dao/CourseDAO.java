@@ -11,7 +11,7 @@ import com.Student.Management_2.utils.HibernateUtils;
 public class CourseDAO {
 
     @SuppressWarnings("deprecation")
-    public boolean addCourse(String courseName, Integer duration, Long fees) {
+    public boolean addCourse(String courseName, Integer duration, Double fees) {
         Transaction tx = null;
 
         try (Session session = HibernateUtils.getSessionFactory().openSession()) {
@@ -28,7 +28,7 @@ public class CourseDAO {
             Course course = new Course();
             course.setCourseName(courseName);
             course.setDuration(duration);
-            course.setFees(fees);
+            course.setFeesAmount(fees);
 
             session.save(course);
             tx.commit();
@@ -76,7 +76,7 @@ public class CourseDAO {
 
     // ✅ Update course by ID
     @SuppressWarnings("deprecation")
-	public boolean updateCourse(Long id, String newCourseName, Integer newDuration, Long newFees) {
+	public boolean updateCourse(Long id, String newCourseName, Integer newDuration, Double newFees) {
         Transaction tx = null;
         try (Session session = HibernateUtils.getSessionFactory().openSession()) {
             tx = session.beginTransaction();
@@ -86,7 +86,7 @@ public class CourseDAO {
 
             course.setCourseName(newCourseName);
             course.setDuration(newDuration);
-            course.setFees(newFees);
+            course.setFeesAmount(newFees);
 
             session.update(course);
             tx.commit();

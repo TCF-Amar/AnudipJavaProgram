@@ -1,6 +1,5 @@
 package com.Student.Management_2.models;
 
-import java.util.Date;
 
 import jakarta.persistence.*;
 
@@ -12,7 +11,7 @@ public class Attandence {
 	private int id;
 
 	@Column(name = "date", nullable = false)
-	private Date date;
+	private String date;
 	@Column(name = "status", nullable = false)
 	private String status;// Present or Absent
 
@@ -24,7 +23,7 @@ public class Attandence {
 		super();
 	}
 
-	public Attandence(Date date, String status, Student student) {
+	public Attandence(String date, String status, Student student) {
 		super();
 		this.date = date;
 		this.status = status;
@@ -39,13 +38,13 @@ public class Attandence {
 		this.id = id;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
+	public void setDate(String formattedDate) {
+		this.date = formattedDate;
+	}	
 
 	public String getStatus() {
 		return status;

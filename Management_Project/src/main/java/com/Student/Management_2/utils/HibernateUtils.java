@@ -5,6 +5,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.Student.Management_2.models.Attandence;
 import com.Student.Management_2.models.Course;
+import com.Student.Management_2.models.Fees;
 import com.Student.Management_2.models.Student;
 import com.Student.Management_2.models.Teacher;
 
@@ -23,6 +24,7 @@ public final class HibernateUtils {
 			cfg.addAnnotatedClass(Student.class);
 			cfg.addAnnotatedClass(Course.class);
 			cfg.addAnnotatedClass(Attandence.class);
+			cfg.addAnnotatedClass(Fees.class);
 			
 			sf = cfg.buildSessionFactory();
 		} catch (Throwable ex) {

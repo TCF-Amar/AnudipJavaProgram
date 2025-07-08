@@ -2,13 +2,15 @@ package com.Student.Management_2.menu;
 
 import java.util.Scanner;
 
+import com.Student.Management_2.services.FeesServices;
 import com.Student.Management_2.services.StudentServices;
 
 public class AdminStudentMenu {
 
 	private static final StudentServices ss = new StudentServices();
 	private static final Scanner sc = new Scanner(System.in);
- 
+	private static final FeesServices fs = new FeesServices();
+
 	public static void show() {
 		while (true) {
 			System.out.println("=================================");
@@ -19,6 +21,9 @@ public class AdminStudentMenu {
 			System.out.println("3. Search Student");
 			System.out.println("4. Update Student");
 			System.out.println("5. Delete Student");
+			System.out.println("6. Pay Fees");
+			System.out.println("7. View Single Student Fees");
+			System.out.println("8. View All Fees By Course");
 			System.out.println("0. Back to Main Menu");
 			System.out.print("Enter your choice: ");
 
@@ -31,26 +36,35 @@ public class AdminStudentMenu {
 			}
 
 			switch (choice) {
-				case 1:
-					ss.createStudentServices();
-					break;
-				case 2:
-					ss.getAllStudentsService();
-					break;
-				case 3:
-					searchStudentSubMenu();
-					break;
-				case 4:
-					ss.updateStudentService();
-					break;
-				case 5:
-					ss.deleteStudentService();
-					break;
-				case 0:
-					System.out.println("✅ Logged out successfully.");
-					return;
-				default:
-					System.out.println("⚠️ Invalid choice, please try again.");
+			case 1:
+				ss.createStudentServices();
+				break;
+			case 2:
+				ss.getAllStudentsService();
+				break;
+			case 3:
+				searchStudentSubMenu();
+				break;
+			case 4:
+				ss.updateStudentService();
+				break;
+			case 5:
+				ss.deleteStudentService();
+				break;
+			case 6:
+				fs.payFeesService();
+				break;
+			case 7:
+				fs.viewFeesService();
+				break;
+			case 8:
+				fs.viewAllFeesByCourseService();
+				break;
+			case 0:
+				System.out.println("✅ Logged out successfully.");
+				return;
+			default:
+				System.out.println("⚠️ Invalid choice, please try again.");
 			}
 		}
 	}
@@ -74,19 +88,19 @@ public class AdminStudentMenu {
 			}
 
 			switch (choice) {
-				case 1:
-					ss.getStudentByIdService();
-					break;
-				case 2:
-					ss.getStudentByEmailService();
-					break;
-				case 3:
-					ss.getStudentByNameService();
-					break;
-				case 0:
-					return;
-				default:
-					System.out.println("⚠️ Invalid choice, please try again.");
+			case 1:
+				ss.getStudentByIdService();
+				break;
+			case 2:
+				ss.getStudentByEmailService();
+				break;
+			case 3:
+				ss.getStudentByNameService();
+				break;
+			case 0:
+				return;
+			default:
+				System.out.println("⚠️ Invalid choice, please try again.");
 			}
 		}
 	}

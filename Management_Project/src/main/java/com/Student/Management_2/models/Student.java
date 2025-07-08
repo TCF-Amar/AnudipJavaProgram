@@ -5,7 +5,7 @@ import java.util.List;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "students") // Optional: explicitly name the table
+@Table(name = "students")
 public class Student {
 
     @Id
@@ -15,17 +15,20 @@ public class Student {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true) // Assuming email must be unique
+    @Column(nullable = false, unique = true)
     private String email;
 
     @ManyToOne
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
-    
+
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<Attandence> attendanceList;
 
-	private int courseId;
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
+    private Fees fees;
+
+    public Student() {}
 
     // Getters & Setters
     public int getId() {
@@ -60,13 +63,27 @@ public class Student {
         this.course = course;
     }
 
-    public int getCourseId() { return getCourseId(); }
-    public void setCourseId(int courseId) { this.courseId = courseId; }
+    public int getCourseId() {
+        return this.course != null ? this.course.getId() : 0;
+    }
 
-	public Object getStudentId() {
-		if (this.id > 0) {
-			return this.id;
-		}
-		return null;
-	}
+    public Object getStudentId() {
+        return this.id > 0 ? this.id : null;
+    }
+
+    public List<Attandence> getAttendanceList() {
+        return attendanceList;
+    }
+
+    public void setAttendanceList(List<Attandence> attendanceList) {
+        this.attendanceList = attendanceList;
+    }
+
+    public Fees getFees() {
+        return fees;
+    }
+
+    public void setFees(Fees fees) {
+        this.fees = fees;
+    }
 }

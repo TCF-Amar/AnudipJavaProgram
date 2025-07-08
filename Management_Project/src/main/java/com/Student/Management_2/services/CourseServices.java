@@ -20,7 +20,7 @@ public class CourseServices {
 		Integer duration = sc.nextInt();
 
 		System.out.print("Enter Course Fees: ");
-		Long fees = sc.nextLong();
+		Double fees = sc.nextDouble();
 		sc.nextLine(); // Clear buffer
 
 		Boolean res = courseDAO.addCourse(courseName, duration, fees);
@@ -113,7 +113,7 @@ public class CourseServices {
 		Integer newDuration = sc.nextInt();
 
 		System.out.print("Enter new Fees: ");
-		Long newFees = sc.nextLong();
+		Double newFees = sc.nextDouble();
 		sc.nextLine();
 
 		Boolean updated = courseDAO.updateCourse(id, newName, newDuration, newFees);
@@ -152,6 +152,6 @@ public class CourseServices {
 		System.out.print(c.getId() + "\t|");
 		System.out.print(c.getCourseName() + "\t\t|");
 		System.out.print(c.getDuration() + " years" + "\t\t|");
-		System.out.println("₹" + c.getFees());
+		System.out.println("₹" + c.getFeesAmaount());
 	}
 }
